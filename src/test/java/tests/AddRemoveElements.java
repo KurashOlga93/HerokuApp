@@ -12,7 +12,7 @@ import java.util.List;
 public class AddRemoveElements {
 
     @Test
-    public void addRemoveEl() {
+    public void addRemoveElement() {
 
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         WebDriver driver = new ChromeDriver();
@@ -21,14 +21,9 @@ public class AddRemoveElements {
         WebElement addButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
         addButton.click();
         addButton.click();
-
         WebElement deleteButton = driver.findElement(By.xpath("//button[text()='Delete']"));
         deleteButton.click();
-
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[text()='Delete']"));
-
-        int countOfDeleteButtons = deleteButtons.size();
-
-        Assert.assertEquals(countOfDeleteButtons,1);
+        Assert.assertEquals(deleteButtons.size(), 1);
     }
 }

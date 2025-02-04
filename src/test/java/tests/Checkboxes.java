@@ -17,21 +17,12 @@ public class Checkboxes {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
 
         WebElement firstCheckbox = driver.findElement(By.cssSelector("[type=checkbox]:nth-child(1)"));
-
         Assert.assertFalse(firstCheckbox.isSelected());
-
         firstCheckbox.click();
-
         Assert.assertTrue(firstCheckbox.isSelected());
-
         WebElement secondCheckbox = driver.findElement(By.cssSelector("[type=checkbox]:nth-child(3)"));
-
         Assert.assertTrue(secondCheckbox.isSelected());
-
         secondCheckbox.click();
-
         Assert.assertFalse(secondCheckbox.isSelected());
-
     }
-
 }

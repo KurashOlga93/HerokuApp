@@ -19,14 +19,10 @@ public class NotificationMessage {
         driver.get("http://the-internet.herokuapp.com/notification_message_rendered");
 
         WebElement link = driver.findElement(By.linkText("Click here"));
-
         link.click();
-
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        String element = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
-
-        Assert.assertEquals(element.split("\n")[0], "Action successful", "Actual text not equal to expected text.");
-
+        String elementText = driver.findElement(By.xpath("//*[@id='flash']")).getText();
+        Assert.assertEquals(elementText.split("\n")[0],
+                "Action successful", "Actual text not equal to expected text.");
     }
 }
