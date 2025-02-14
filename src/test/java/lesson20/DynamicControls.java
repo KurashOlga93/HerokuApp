@@ -23,7 +23,8 @@ public class DynamicControls {
         driver.get("http://the-internet.herokuapp.com/dynamic_controls");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        driver.findElement(By.xpath("//*[@id='checkbox-example']/button")).click();
+        WebElement removeButton = driver.findElement(By.xpath("//*[@id='checkbox-example']/button"));
+        removeButton.click();
         wait.until(ExpectedConditions.textToBe(By.id("message"), "It's gone!"));
         List<WebElement> checkboxes = driver.findElements(By.id("checkbox"));
         boolean checkBoxDoesNotExist = checkboxes.isEmpty();
@@ -41,7 +42,8 @@ public class DynamicControls {
 
         boolean isInputEnabled = driver.findElement(By.xpath("//input[@type='text']")).isEnabled();
         softAssert.assertFalse(isInputEnabled);
-        driver.findElement(By.xpath("//button[text()='Enable']")).click();
+        WebElement enableButton = driver.findElement(By.xpath("//button[text()='Enable']"));
+        enableButton.click();
         wait.until(ExpectedConditions.textToBe(By.id("message"), "It's enabled!"));
         boolean isInputEnabledAfterClick = driver.findElement(By.xpath("//input[@type='text']")).isEnabled();
         softAssert.assertTrue(isInputEnabledAfterClick);

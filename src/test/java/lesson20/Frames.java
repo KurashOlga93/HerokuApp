@@ -23,7 +23,8 @@ public class Frames {
         driver.get("http://the-internet.herokuapp.com/frames");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        driver.findElement(By.linkText("iFrame")).click();
+        WebElement iframeLink = driver.findElement(By.linkText("iFrame"));
+        iframeLink.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='tox-icon']"))).click();
         driver.switchTo().frame("mce_0_ifr");
         String actualText = driver.findElement(By.xpath("//*[@id='tinymce']/p")).getText();
